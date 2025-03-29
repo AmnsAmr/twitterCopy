@@ -1,0 +1,299 @@
+/* More specific override */
+.container form > .auth-button {
+    width: 100% !important;
+    padding: 12px !important;
+    margin-top: 15px !important;
+    background-color: var(--accent-color) !important;
+    color: var(--text-color) !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 2px 10px rgba(29, 161, 242, 0.2) !important;
+}
+
+.container form > .auth-button:hover {
+    background-color: var(--accent-hover) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 15px rgba(29, 161, 242, 0.3) !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.settings-dropdown { 
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+  background-color: var(--container-bg);
+  border-radius: 12px;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.4);
+  padding: 1.5rem;
+  z-index: 10;
+  opacity: 0;
+  width: 400px;
+  max-width: 90vw;
+  max-height: 80vh;
+  overflow-y: auto;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.settings-dropdown.show { 
+  display: block;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.settings-dropdown .dropdown-form { 
+  margin: 1.5rem 0;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.settings-dropdown .dropdown-form:last-child { 
+  border-bottom: none;
+}
+
+.settings-dropdown h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+  color: var(--text-color);
+}
+
+.settings-dropdown textarea {
+  width: 94%;
+  min-height: 100px;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid var(--border-color);
+  border-radius:10px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  resize: none;
+  font-family: inherit;
+}
+
+.settings-dropdown input[type="file"] {
+  width: 96%;
+  margin-bottom: 15px;
+  color: var(--text-color);
+  padding: 8px;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 50px;
+}
+
+.settings-dropdown .auth-button { 
+  width: 100%;
+  padding: 12px;
+  background-color: var(--sidebar-bg);
+  border: 2px;
+  border-color: var(--background-color);
+  border-radius: 50px;
+  color: var(--text-color);
+  cursor: pointer;
+  font-size: 0.95rem;
+  margin-top: 8px;
+}
+
+.settings-dropdown .auth-button:hover { 
+  background-color: var(--border-color);
+}
+
+.settings-dropdown .delete-account { 
+  width: 100%;
+  background-color: #ff4444;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.delete-account {
+  position: relative; /* For proper image positioning */
+  padding-left: 40px; /* Make space for the icon */
+}
+.delete_image {
+  position: absolute;
+  left: 12px; /* Adjust as needed */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px; /* Fixed width */
+  height: 20px; /* Fixed height */
+  object-fit: contain; /* Ensures image fits within dimensions */
+  pointer-events: none; /* Prevents the image from blocking button clicks */
+}
+/*profile input*/
+
+/* Add to your profile.css file */
+.dropdown-form input[type="file"] {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.file-input-label {
+  display: block;
+  width: 86%;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  background-color: var(--background-color);
+  border: 2px dashed var(--border-color);
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.file-input-label:hover {
+  border-color: var(--accent-color);
+  background-color: rgba(29, 161, 242, 0.05);
+}
+
+.file-input-label .upload-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.file-input-label .upload-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  filter: invert(80%);
+}
+
+.file-input-label .upload-text {
+  color: var(--light-text);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.file-input-label .upload-hint {
+  color: var(--border-color);
+  font-size: 0.8rem;
+}
+
+.file-preview-container {
+  display: none;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.file-preview {
+  width: 100%;
+  max-height: 150px;
+  object-fit: contain;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+}
+
+.remove-preview {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: rgba(0, 0, 0, 0.7);
+  border: none;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* When file is selected */
+.dropdown-form.has-file .file-input-label {
+  padding: 0.8rem;
+  border-style: solid;
+  border-color: var(--accent-color);
+  background-color: rgba(29, 161, 242, 0.1);
+}
+
+.dropdown-form.has-file .file-input-label .upload-icon {
+  display: none;
+}
+
+.dropdown-form.has-file .file-input-label .upload-text {
+  color: var(--accent-color);
+}
+
+.dropdown-form.has-file .file-input-label .upload-hint {
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+/* Tweet styling */
+.tweet {
+    border: 1px solid #e1e8ed;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    background: white;
+}
+
+.tweet-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+
+.username {
+    font-weight: bold;
+    color: #1da1f2;
+}
+
+.timestamp {
+    color: #657786;
+}
+
+.tweet-content {
+    font-size: 1.1em;
+    line-height: 1.4;
+}
+
+.no-tweets {
+    padding: 20px;
+    text-align: center;
+    color: #657786;
+}
+
+.error {
+    color: #e0245e;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.success {
+    color: #17bf63;
+    padding: 10px;
+    margin-top: 10px;
+}

@@ -1,0 +1,47 @@
+<?php
+function getAllTweets($conn) {
+    try {
+        $query = "
+            SELECT p.*, u.username 
+            FROM posts p
+            JOIN users u ON p.user_id = u.user_id
+            ORDER BY p.timestamp DESC
+        ";
+        $result = $conn->query($query);
+
+        $output = '';
+        while ($row = $result->fetch_assoc()) {
+            $media = '';
+            if (!empty($row['media_data'])) {
+                $base64 = base64_encode($row['media_data']);
+                $dataUri = 'data:' . $row['media_mime_type'] . ';base64,' . $base64;
+                
+                if (strpos($row['media_mime_type'], 'image/') === 0) {
+                    $media = '<img src="'.$dataUri.'" class="tweet-media">';
+                } else if (strpos($row['media_mime_type'], 'video/') === 0) {
+                    $media = '
+                    <video controls class="tweet-media">
+                        <source src="'.$dataUri.'" type="'.$row['media_mime_type'].'">
+                        Your browser does not support the video tag.
+                    </video>
+                    ';
+                }
+            }
+            
+            $output .= '
+            <div class="tweet">
+                <div class="tweet-header">
+                    <span class="username">@'.htmlspecialchars($row['username']).'</span>
+                    <span class="timestamp">'.date('M j, Y g:i a', strtotime($row['timestamp'])).'</span>
+                </div>
+                <div class="tweet-content">'.nl2br(htmlspecialchars($row['content'])).'</div>
+                '.$media.'
+            </div>';
+        }
+        return $output;
+    } catch (Exception $e) {
+        error_log($e->getMessage());
+        return '<div class="error">Error loading tweets</div>';
+    }
+}
+?>
