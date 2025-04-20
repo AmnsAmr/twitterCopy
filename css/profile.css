@@ -362,6 +362,7 @@ button.auth-button{
 
 .profile-tweets-container {
   margin-top: 20px;
+  max-height: none;
 }
 
 .profile-tweets-container .tweet {

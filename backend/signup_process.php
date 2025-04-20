@@ -54,12 +54,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Insert the new user into the database
     try {
-        // Set the default profile picture for new users
-        $default_profile_picture = NULL;
-
         // Insert the new user into the database
-        $stmt = $conn->prepare("INSERT INTO users (username ,email, password_hash, profile_picture) VALUES (? ,?, ?, ?)");
-        $stmt->bind_param("ssss",$username, $email, $password_hash, $default_profile_picture);
+        $stmt = $conn->prepare("INSERT INTO users (username ,email, password_hash) VALUES (? ,?, ?)");
+        $stmt->bind_param("sss",$username, $email, $password_hash,);
         $stmt->execute();
 
         // Redirect to the login page after successful registration

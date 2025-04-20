@@ -1,14 +1,6 @@
 <?php
-// backend/delete_account.php
-
 // Start session
 session_start();
-
-// Check if the user is logged in
-if (!isset($_SESSION['user_id'])) {
-    die("You must be logged in to delete your account.");
-}
-
 // Include database connection
 require_once 'connection.php';
 

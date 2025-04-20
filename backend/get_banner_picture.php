@@ -18,12 +18,15 @@ try {
     $stmt->store_result();
 
     if ($stmt->num_rows === 1) {
-        $stmt->bind_result($banner_image);
+        $stmt->bind_result($banner_image);//This tells MySQLi:
+        // “When I call fetch(), put the value of the banner_image column into the $banner_image variable.”
         $stmt->fetch();
         
         if ($banner_image) {
             // Set the content type header (adjust if necessary)
-            header("Content-Type: image/jpeg"); // Change to image/png or image/gif if needed
+            $info = getimagesize($banner_image);
+            $mimeType = $info['mime'];
+            header("Content-Type: $mimeType"); // Change to image/png or image/gif if needed
             echo $banner_image;
         } else {
             // Send a default banner if no banner is set
